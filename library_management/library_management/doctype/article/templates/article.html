@@ -1,0 +1,54 @@
+{% extends "templates/web.html" %}
+
+{% block page_content %}
+<div class="book-container">
+    <div class="book-image">
+        <img src="{{ image }}" alt="{{ title }}" style="max-width: 200px; border-radius: 5px;">
+    </div>
+    <div class="book-details">
+        <h1>{{ title }}</h1>
+        <p><strong>By {{ author }}</strong></p>
+
+        {% if status == 'Available' %}
+        <span style="color: green; font-weight: bold;">Available</span>
+        {% elif status == 'Issued' %}
+        <span style="color: red; font-weight: bold;">Issued</span>
+        {% endif %}
+
+        <p><strong>Publisher:</strong> {{ publisher }}</p>
+        <p><strong>ISBN:</strong> {{ isbn }}</p>
+
+        <p>{{ description }}</p>
+    </div>
+</div>
+
+<style>
+    .book-container {
+        display: flex;
+        gap: 20px;
+        align-items: flex-start;
+        border: 1px solid #ddd;
+        padding: 20px;
+        border-radius: 5px;
+        background-color: #f9f9f9;
+    }
+
+    .book-image img {
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .book-details h1 {
+        margin-top: 0;
+        font-size: 1.8rem;
+        color: #333;
+    }
+
+    .book-details p {
+        margin: 5px 0;
+        color: #555;
+    }
+</style>
+{% endblock %}
+
+
+<!-- this is a sample default web page template -->

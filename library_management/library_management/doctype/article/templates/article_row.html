@@ -1,0 +1,49 @@
+<div>
+	<a href="/{{ doc.route |e }}">{{ (doc.title or doc.name) |e }}</a>
+</div>
+
+<!-- this is a sample default list template -->
+<!-- ![{{ doc.name }}]({{ doc.image }})
+[{{ doc.name }}]({{ doc.route }})
+By {{ doc.author }}  -->
+
+
+
+
+
+<div class="book-list">
+    {% for doc in docs %}
+    <div class="book-item">
+        <a href="/{{ doc.route |e }}">
+            <h2>{{ doc.title or doc.name }}</h2>
+            <p>{{ doc.isbn }}</p>
+        </a>
+        <div>
+            <img alt="{{ doc.name }}" src="{{ doc.image }}" />
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+<style>
+    .book-list {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        padding: 10px;
+    }
+    .book-item {
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        padding: 15px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+    .book-item img {
+        display: block;
+        margin: 10px 0;
+    }
+    .book-item h2 {
+        color: #333;
+        margin-bottom: 10px;
+    }
+</style>
